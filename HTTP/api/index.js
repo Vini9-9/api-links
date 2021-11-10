@@ -6,11 +6,19 @@ http.createServer((req, res) => {
 	const { name, url, action } = URL.parse(req.url, true).query
 	console.log(name, url, action);
 	urls = data.urls
+	var repetido = false
 
 	if (action) {
 		switch (action.toUpperCase()) {
 			case "C":
-				urls.push({ "name": name, "url": url });
+				data.urls.forEach(function (element) {
+					if (element.name == name) {
+						repetido = true;
+					}
+				});
+				if (!repetido) {
+					urls.push({ "name": name, "url": url });
+				}
 				break;
 			case "U":
 				data.urls.forEach(function (element) {
@@ -21,7 +29,7 @@ http.createServer((req, res) => {
 				console.log(data.urls);
 				break;
 			case "D":
-				data.urls = urls.filter(item => item.url !== url);
+				data.urls = urls.filter(item => item.name !== name);
 				console.log(data.urls);
 				break;
 			default:
