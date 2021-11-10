@@ -1,5 +1,7 @@
 const http = require('http')
 const URL = require('url')
+const fs = require('fs')
+const path = require('path')
 const data = require('./urls.json')
 
 http.createServer((req, res) => {
@@ -37,6 +39,16 @@ http.createServer((req, res) => {
 		}
 	}
 
+	return fs.writeFile(
+		path.join(__dirname, "urls.json"),
+		JSON.stringify(data, null, 2),
+		err => {
+			if (err) throw err
+
+			res.end(JSON.stringify({ status: "ok", name: name, url: url, action: action }))
+		}
+
+	)
 	return res.end(JSON.stringify(data));
 
 }).listen(3000, () => console.log('API is running'))
