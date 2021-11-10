@@ -5,8 +5,8 @@ const form = document.querySelector('form')
 
 async function load() {
     const res = await fetch("http://localhost:3000/").then((data) => data.json())
-    
-    res.urls.map(({name, url}) => addElement({name, url}))
+    console.log(res)
+    res.urls.map(({ name, url }) => addElement({ name, url }))
 }
 
 load()
@@ -39,15 +39,15 @@ form.addEventListener("submit", (event) => {
 
     let { value } = input
 
-    if (!value) 
+    if (!value)
         return alert('Preencha o campo')
 
     const [name, url] = value.split(",")
 
-    if (!url) 
+    if (!url)
         return alert('formate o texto da maneira correta')
 
-    if (!/^http/.test(url)) 
+    if (!/^http/.test(url))
         return alert("Digite a url da maneira correta")
 
     addElement({ name, url })

@@ -6,7 +6,11 @@
     },
     {
       "name": "amazon",
-      "url": "amazon.com.br"
+      "url": "http://amazon.com.br"
+    },
+    {
+      "name": "facebook",
+      "url": "http://www.Facebook.com.br"
     }
   ]
 }
