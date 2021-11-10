@@ -5,8 +5,8 @@ const path = require('path')
 const data = require('./urls.json')
 
 http.createServer((req, res) => {
+	res.writeHead(200, { 'Access-Control-Allow-Origin': '*' })
 	const { name, url, action } = URL.parse(req.url, true).query
-	console.log(name, url, action);
 	urls = data.urls
 	var repetido = false
 
@@ -28,11 +28,9 @@ http.createServer((req, res) => {
 						element.url = url;
 					}
 				});
-				console.log(data.urls);
 				break;
 			case "D":
 				data.urls = urls.filter(item => item.name !== name);
-				console.log(data.urls);
 				break;
 			default:
 				break;
@@ -49,6 +47,5 @@ http.createServer((req, res) => {
 		}
 
 	)
-	return res.end(JSON.stringify(data));
 
 }).listen(3000, () => console.log('API is running'))
