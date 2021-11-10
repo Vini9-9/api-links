@@ -41,8 +41,8 @@ async function removeElement(el) {
     }
 }
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
+form.addEventListener("submit", async function (event) {
+    event.preventDefault()
 
     let { value } = input
 
@@ -56,6 +56,9 @@ form.addEventListener("submit", (event) => {
 
     if (!/^http/.test(url))
         return alert("Digite a url da maneira correta")
+
+    const res = await fetch(`http://localhost:3000/?action=c&name=${name}&url=${url}`).then((data) => data.json())
+    console.log(res)
 
     addElement({ name, url })
 
