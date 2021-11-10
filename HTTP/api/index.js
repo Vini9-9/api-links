@@ -42,11 +42,12 @@ http.createServer((req, res) => {
 		JSON.stringify(data, null, 2),
 		err => {
 			if (err) throw err
-			if (req.url == '/') {
-				res.end(JSON.stringify(data))
-			} else {
-				res.end(JSON.stringify({ status: "ok", name: name, url: url, action: action, data: data }))
-			}
+			/* 			if (req.url == '/') {
+							res.end(JSON.stringify(data))
+						} else {
+							res.end(JSON.stringify({ status: "ok", name: name, url: url, action: action, data: data }))
+						} */
+			res.end(JSON.stringify(data))
 		}
 
 	)

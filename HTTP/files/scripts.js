@@ -29,9 +29,16 @@ function addElement({ name, url }) {
     ul.append(li)
 }
 
-function removeElement(el) {
-    if (confirm('Tem certeza que deseja deletar?'))
+async function removeElement(el) {
+    linkElem = el.parentNode.firstChild
+    nome = linkElem.text;
+    url = linkElem.href;
+
+    if (confirm('Tem certeza que deseja deletar?')) {
+        const res = await fetch(`http://localhost:3000/?action=d&name=${nome}`).then((data) => data.json())
+        console.log(res)
         el.parentNode.remove()
+    }
 }
 
 form.addEventListener("submit", (event) => {
