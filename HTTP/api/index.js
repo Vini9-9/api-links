@@ -45,7 +45,7 @@ http.createServer((req, res) => {
 		err => {
 			if (err) throw err
 
-			res.end(JSON.stringify({ status: "ok", name: name, url: url, action: action }))
+			res.end(JSON.stringify({ status: "ok", name: name, url: url, action: action, data: data }))
 		}
 
 	)
