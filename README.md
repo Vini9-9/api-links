@@ -1,6 +1,10 @@
 # api-links
 Gerador de hiperlink com integração com API
-_____________
+
+## Tecnologias:
+<img alt="NodeJS" height="100" width="100" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" />
+
+
 ## Resumo:
 
 ### Página inicial
